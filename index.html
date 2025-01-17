@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradelens - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #4CAF50;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo h1 {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar-links li {
+            font-size: 18px;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #4CAF50, #8bc34a);
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            border-bottom: 5px solid #333;
+        }
+
+        .hero h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            animation: fadeInUp 2.5s ease-in-out;
+        }
+
+        .hero-button {
+            background-color: #333;
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #4CAF50;
+        }
+
+        /* New Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 70px 0;
+            padding: 0 30px;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            padding: 35px;
+            width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h3 {
+            color: #4CAF50;
+            margin-bottom: 18px;
+            font-size: 26px;
+        }
+
+        .feature-card p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-card {
+                margin-bottom: 35px;
+                width: 80%;
+            }
+
+            .hero h2 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <h1>Tradelens</h1>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h2>Your Gateway to Smarter Investments</h2>
+        <p>Welcome to Tradelens, where we bring you stock analytics and predictions.</p>
+        <button class="hero-button" onclick="window.location.href='stocks.html'">Explore Stocks</button>
+    </header>
+
+    <!-- New Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <h3>Real-Time Analytics</h3>
+            <p>Stay up to date with live stock data and make informed investment decisions.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Prediction Tools</h3>
+            <p>Leverage powerful tools for predicting future stock movements.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Custom Alerts</h3>
+            <p>Set alerts for stock price changes and be notified instantly.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tradelens. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+
+</html>
