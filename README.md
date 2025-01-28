@@ -45,3 +45,22 @@ Make sure you have the following installed:
   - `stockstats`
   - `tqdm`
   - `sklearn` (for model building)
+
+#### Installation
+1. Clone the repository:
+   - Navigate to the project directory:
+     ```bash
+     cd TradeLens
+     ```
+   - Install the required dependencies:
+     ```bash
+     pip install pandas stockstats tqdm scikit-learn
+     ```
+   - Make sure you have Git Large File Storage (LFS) for handling large files:
+     ```bash
+     git lfs install
+     ```
+
+#### License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
