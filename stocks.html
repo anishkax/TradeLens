@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Tradelens - Stocks</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         * {
@@ -13,137 +14,282 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px 30px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            background-color: rgba(0, 128, 0, 0.1); /* Greenish transparent background */
+            color: white;
         }
 
-        .login-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            background-color: #b0e57c; /* Light green color */
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        .navbar-logo h1 {
+            font-size: 30px;
+            margin: 0;
         }
 
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: transparent;
-            border: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #555;
-            cursor: pointer;
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-links li {
+            font-size: 18px;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
             transition: color 0.3s;
         }
 
-        .close-button:hover {
+        .navbar-links a:hover {
             color: #333;
         }
 
-        .login-container h1 {
+        /* Top Stocks Section */
+        .top-stocks-section {
             text-align: center;
+            padding: 50px 20px;
+            background-color: #111;
+            margin-bottom: 30px;
+        }
+
+        .top-stocks-section h3 {
+            font-size: 35px;
+            color: #4CAF50;
             margin-bottom: 20px;
-            color: #333;
-            font-size: 2rem;
-            font-weight: 600;
         }
 
-        .form-group {
-            margin-bottom: 15px;
+        .chart-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-            font-size: 1rem;
+        canvas {
+            max-width: 100%;
         }
 
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            transition: box-shadow 0.3s, border-color 0.3s;
-        }
-
-        .form-group input:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
-        }
-
-        .login-button {
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 25px;
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .login-button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        .forgot-password {
+        /* Stocks Section */
+        .stocks-section {
             text-align: center;
-            margin-top: 15px;
+            padding: 50px 20px;
         }
 
-        .forgot-password a {
-            color: #007bff;
+        .stocks-section h3 {
+            font-size: 35px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .stocks-section p {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        /* Stock Cards */
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .stock-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stock-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .stock-card h4 {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .stock-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #4CAF50;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-family: 'Poppins', sans-serif;
         }
 
-        .forgot-password a:hover {
+        footer a:hover {
             text-decoration: underline;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div class="login-container">
-        <button class="close-button" onclick="closePage()">&times;</button>
-        <h1>Login</h1>
-        <form>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit" class="login-button">Login</button>
-        </form>
-        <div class="forgot-password">
-            <a href="#">Forgot your password?</a>
+    <!-- Include Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <h1>Tradelens</h1>
         </div>
-    </div>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Top Stocks Section -->
+    <section class="top-stocks-section">
+        <h3>Top Stocks of the Day</h3>
+        <div class="chart-container">
+            <canvas id="topStocksChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Stock Selection Section -->
+    <section class="stocks-section">
+        <h3>Stock Dashboard</h3>
+        <p>Select a stock to proceed to the prediction app:</p>
+        <div class="stock-grid">
+            <div class="stock-card" onclick="redirectToApp('AAPL')">
+                <h4>Apple (AAPL)</h4>
+                <p>Analyze trends for Apple Inc.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('GOOG')">
+                <h4>Google (GOOG)</h4>
+                <p>Insights for Alphabet Inc.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('MSFT')">
+                <h4>Microsoft (MSFT)</h4>
+                <p>Explore trends for Microsoft Corporation.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('GME')">
+                <h4>GameStop (GME)</h4>
+                <p>Get analysis on GameStop.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('NVDA')">
+                <h4>NVIDIA (NVDA)</h4>
+                <p>Deep dive into NVIDIA trends.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('TSLA')">
+                <h4>Tesla (TSLA)</h4>
+                <p>Track trends for Tesla Motors.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('BTC-USD')">
+                <h4>Bitcoin (BTC-USD)</h4>
+                <p>Analyze Bitcoin's price trends.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('ETH-USD')">
+                <h4>Ethereum (ETH-USD)</h4>
+                <p>Insights for Ethereum blockchain.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('META')">
+                <h4>Meta (META)</h4>
+                <p>Explore Meta's market trends.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('JPM')">
+                <h4>JPMorgan (JPM)</h4>
+                <p>Stock trends for JPMorgan Chase.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('AMZN')">
+                <h4>Amazon (AMZN)</h4>
+                <p>Track Amazon's price performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tradelens. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        function closePage() {
-            window.close();
+        // Placeholder data for the chart
+        const topStocksData = {
+            labels: ["AAPL", "GOOG", "MSFT", "NVDA", "TSLA"],
+            datasets: [{
+                label: "Top Gainers",
+                data: [3.5, 2.8, 4.2, 3.9, 5.1],
+                backgroundColor: [
+                    "rgba(75, 192, 192, 0.6)",
+                    "rgba(54, 162, 235, 0.6)",
+                    "rgba(255, 206, 86, 0.6)",
+                    "rgba(153, 102, 255, 0.6)",
+                    "rgba(255, 99, 132, 0.6)"
+                ],
+                borderColor: [
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 99, 132, 1)"
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: "bar",
+            data: topStocksData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "top"
+                    },
+                    title: {
+                        display: true,
+                        text: "Top Gainers (Daily Percentage Change)"
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Render the chart
+        const ctx = document.getElementById("topStocksChart").getContext("2d");
+        new Chart(ctx, config);
+
+        // Function to redirect to the prediction app
+        function redirectToApp(stockSymbol) {
+            const url = `http://localhost:8501/?stock=${stockSymbol}`;
+            window.open(url, "_blank");
         }
     </script>
 </body>
+
 </html>

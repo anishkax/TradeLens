@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Get in touch with Tradelens. Contact us for inquiries, support, or feedback.">
     <title>Contact Us - Tradelens</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,6 +14,7 @@
             padding: 0;
             background-color: #000;
             color: #fff;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
@@ -56,13 +56,17 @@
             text-decoration: underline;
         }
 
-        .contact-section {
+        .contact-section,
+        .faq-section {
             padding: 40px 20px;
             background-color: #1a1a1a;
             max-width: 800px;
             margin: 30px auto;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
         }
 
         .contact-form label {
@@ -80,6 +84,13 @@
             border-radius: 5px;
             background-color: #333;
             color: white;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #4CAF50;
+            transform: scale(1.02);
         }
 
         .contact-form button {
@@ -90,6 +101,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s;
         }
 
         .contact-form button:hover {
@@ -120,23 +132,11 @@
             color: #4CAF50;
             font-size: 20px;
             text-decoration: none;
+            transition: color 0.3s;
         }
 
         .social-media a:hover {
             color: #fff;
-        }
-
-        .faq-section {
-            padding: 40px 20px;
-            background-color: #1a1a1a;
-            max-width: 800px;
-            margin: 30px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .faq-section h2 {
-            margin-bottom: 20px;
         }
 
         .faq-item {
@@ -169,6 +169,32 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .error {
+            border-color: #ff4444 !important;
+        }
+
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .light-mode .contact-section,
+        .light-mode .faq-section {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .light-mode .contact-form input,
+        .light-mode .contact-form textarea {
+            background-color: #f0f0f0;
+            color: #333;
+        }
     </style>
 </head>
 
@@ -188,7 +214,7 @@
     </header>
 
     <main>
-        <section class="contact-section" aria-labelledby="contact-heading">
+        <section class="contact-section fade-in" aria-labelledby="contact-heading">
             <h2 id="contact-heading">Contact Us</h2>
             <p>We'd love to hear from you! Fill out the form below to reach us.</p>
             <form class="contact-form" action="/submit-contact-form" method="POST" novalidate>
@@ -205,14 +231,14 @@
             </form>
         </section>
 
-        <section class="map-section">
+        <section class="map-section fade-in">
             <h2>Find Us</h2>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434508618!2d78.9629!3d20.5937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c5c80d2aa8cd%3A0x8f7f8b3e73d40d5f!2sIndia!5e0!3m2!1sen!2sin!4v1609435412345!5m2!1sen!2sin"
                 allowfullscreen="" loading="lazy"></iframe>
         </section>
 
-        <section class="faq-section">
+        <section class="faq-section fade-in">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
                 <h3>How can I get support?</h3>
@@ -224,7 +250,7 @@
             </div>
         </section>
 
-        <section class="social-media">
+        <section class="social-media fade-in">
             <h2>Follow Us</h2>
             <a href="https://facebook.com" aria-label="Facebook" target="_blank">Facebook</a>
             <a href="https://twitter.com" aria-label="Twitter" target="_blank">Twitter</a>
@@ -236,6 +262,71 @@
     <footer>
         <p>&copy; 2025 Tradelens. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
     </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form validation and submission
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateForm()) {
+                // Simulate form submission
+                setTimeout(() => {
+                    alert('Thank you for your message. We will get back to you soon!');
+                    form.reset();
+                }, 1000);
+            }
+        });
+
+        function validateForm() {
+            let isValid = true;
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                } else {
+                    input.classList.remove('error');
+                }
+            });
+            return isValid;
+        }
+
+        // Fade-in effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Dark mode toggle
+        const toggleButton = document.createElement('button');
+        toggleButton.textContent = '🌓';
+        toggleButton.style.position = 'fixed';
+        toggleButton.style.top = '20px';
+        toggleButton.style.right = '20px';
+        toggleButton.style.zIndex = '1000';
+        document.body.appendChild(toggleButton);
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+        });
+    </script>
 </body>
 
 </html>
