@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradelens - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #5998f6, #5252b3);
+            color: #fdfdfd;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #f9f9f9;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #5998f6, #5252b3);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar-logo h1 {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar-links li {
+            font-size: 18px;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #5998f6, #5252b3); /* Green gradient background */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 180px 20px 120px; 
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            animation: fadeInUp 2.5s ease-in-out;
+        }
+
+        .hero-button {
+            background-color: #7baaf0;
+            color: black;
+            padding: 18px 35px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #252281;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 70px 0;
+            padding: 0 30px;
+        }
+
+        .feature-card {
+            background-color: #ECDFD2;
+            padding: 35px;
+            width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(88, 35, 211, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, #c0d4f4, #ababf0);
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h3 {
+            color: #070707;
+            margin-bottom: 18px;
+            font-size: 26px;
+        }
+
+        .feature-card p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: #252281;
+            margin-bottom: 20px;
+        }
+
+
+        footer 
+        {
+    background-color: #ECDFD2;
+    color: black;
+    text-align: center;
+    padding: 15px; 
+        }
+
+
+        footer a {
+            color: #3059ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* FAB (Floating Action Button) */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #7baaf0;
+            color: black;
+            
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .fab:hover {
+            background-color: #252281;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-card {
+                margin-bottom: 35px;
+                width: 80%;
+            }
+
+            .hero h2 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <h1>Tradelens</h1>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <h2>Your Gateway to Smarter Investments</h2>
+        <p>Welcome to Tradelens, where we bring you stock analytics and predictions.</p>
+        <button class="hero-button" onclick="window.location.href='stocks.html'">Explore Stocks</button>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-chart-line feature-icon"></i>
+            <h3>Real-Time Analytics</h3>
+            <p>Access live stock data and market insights for informed decision-making.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-brain feature-icon"></i>
+            <h3>AI-Powered Predictions</h3>
+            <p>Utilize advanced algorithms to forecast market trends and stock movements.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-bell feature-icon"></i>
+            <h3>Custom Alerts</h3>
+            <p>Receive instant notifications on price changes and market events.</p>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tradelens. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="window.location.href='contact.html'">
+        <i class="fas fa-envelope"></i>
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            darkModeToggle.innerHTML = body.classList.contains('dark-mode') ? 
+                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Navbar Hide on Scroll
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

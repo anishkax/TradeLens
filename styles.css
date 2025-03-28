@@ -1,0 +1,141 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #f0f0f0;
+    background-color: #1c1c1c;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #242424;
+}
+
+.navbar-logo h1 {
+    color: #ffffff;
+    font-size: 1.8em;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.navbar-links li a:hover {
+    color: #7baaf0;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #4CAF50, #388E3C);
+    color: white;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    background-color: #fff;
+    color: #000000;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Stock Section */
+.stocks-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.stocks-section h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #4CAF50;
+}
+
+.stocks-section p {
+    margin-bottom: 40px;
+    color: #bbb;
+}
+
+/* Stock Cards */
+.stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.stock-card {
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.stock-card h4 {
+    color: #4CAF50;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.stock-card p {
+    color: #bbb;
+    font-size: 1em;
+}
+
+.stock-card:hover {
+    transform: scale(1.05);
+    background-color: #383838;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #242424;
+    color: white;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}

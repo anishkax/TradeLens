@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradelens - Stocks</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #5998f6, #5252b3);
+            color: #fff;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #5998f6, #5252b3);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar-logo h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-links li {
+            font-size: 18px;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            color: #333;
+        }
+
+        /* Top Stocks Section */
+        .top-stocks-section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: linear-gradient(to right, #5998f6, #5252b3);
+            margin-bottom: 30px;
+        }
+
+        .top-stocks-section h3 {
+            font-size: 35px;
+            color: #7baaf0;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgb(15, 16, 16);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        canvas {
+            max-width: 100%;
+        }
+
+        /* Stocks Section */
+        .stocks-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .stocks-section h3 {
+            font-size: 35px;
+            color: #7baaf0;
+            margin-bottom: 20px;
+        }
+
+        .stocks-section p {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        /* Stock Cards */
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .stock-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stock-card:hover {
+            background-color:#cbdcf5;
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .stock-card h4 {
+            font-size: 24px;
+            color: #252281;
+            margin-bottom: 10px;
+        }
+
+        .stock-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Footer styles */
+        footer 
+        {
+    background-color: #ECDFD2;
+    color: black;
+    text-align: center;
+    padding: 15px; 
+        }
+
+        footer a {
+            color: #3059ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <h1>Tradelens</h1>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Top Stocks Section -->
+    <section class="top-stocks-section">
+        <h3>Top Stocks of the Day</h3>
+        <div class="chart-container">
+            <canvas id="topStocksChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Stock Selection Section -->
+    <section class="stocks-section">
+        <h3>Stock Dashboard</h3>
+        <p>Select a stock to proceed to the prediction app:</p>
+        <div class="stock-grid">
+            <div class="stock-card" onclick="redirectToApp('AAPL')">
+                <h4>Apple (AAPL)</h4>
+                <p>Analyze trends for Apple Inc.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('GOOG')">
+                <h4>Google (GOOG)</h4>
+                <p>Insights for Alphabet Inc.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('MSFT')">
+                <h4>Microsoft (MSFT)</h4>
+                <p>Explore trends for Microsoft Corporation.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('GME')">
+                <h4>GameStop (GME)</h4>
+                <p>Get analysis on GameStop.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('NVDA')">
+                <h4>NVIDIA (NVDA)</h4>
+                <p>Deep dive into NVIDIA trends.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('TSLA')">
+                <h4>Tesla (TSLA)</h4>
+                <p>Track trends for Tesla Motors.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('BTC-USD')">
+                <h4>Bitcoin (BTC-USD)</h4>
+                <p>Analyze Bitcoin's price trends.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('ETH-USD')">
+                <h4>Ethereum (ETH-USD)</h4>
+                <p>Insights for Ethereum blockchain.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('META')">
+                <h4>Meta (META)</h4>
+                <p>Explore Meta's market trends.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('JPM')">
+                <h4>JPMorgan (JPM)</h4>
+                <p>Stock trends for JPMorgan Chase.</p>
+            </div>
+            <div class="stock-card" onclick="redirectToApp('AMZN')">
+                <h4>Amazon (AMZN)</h4>
+                <p>Track Amazon's price performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tradelens. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Placeholder data for the chart
+        const topStocksData = {
+            labels: ["AAPL", "GOOG", "MSFT", "NVDA", "TSLA"],
+            datasets: [{
+                label: "Top Gainers",
+                data: [3.5, 2.8, 4.2, 3.9, 5.1],
+                backgroundColor: [
+                    "rgba(75, 192, 192, 0.6)",
+                    "rgba(54, 162, 235, 0.6)",
+                    "rgba(255, 206, 86, 0.6)",
+                    "rgba(153, 102, 255, 0.6)",
+                    "rgba(255, 99, 132, 0.6)"
+                ],
+                borderColor: [
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 99, 132, 1)"
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: "bar",
+            data: topStocksData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "top"
+                    },
+                    title: {
+                        display: true,
+                        text: "Top Gainers (Daily Percentage Change)"
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Render the chart
+        const ctx = document.getElementById("topStocksChart").getContext("2d");
+        new Chart(ctx, config);
+
+        // Function to redirect to the prediction app
+        function redirectToApp(stockSymbol) {
+            const url = `http://localhost:8501/?stock=${stockSymbol}`;
+            window.open(url, "_blank");
+        }
+    </script>
+</body>
+
+</html>

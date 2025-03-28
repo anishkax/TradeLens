@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with Tradelens. Contact us for inquiries, support, or feedback.">
+    <title>Contact Us - Tradelens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to right, #5998f6, #5252b3);
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+           background: linear-gradient(to right, #5998f6, #5252b3);
+            color: white;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar-logo h1 {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-links li {
+            display: inline;
+            font-size: 18px;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar-links a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-section,
+        .faq-section {
+            padding: 40px 20px;
+            background-color: #1a1a1a;
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .contact-section h2,
+        .faq-section h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p,
+        .faq-section p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-form label {
+            margin-bottom: 5px;
+            display: block;
+            font-size: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #4CAF50;
+            transform: scale(1.02);
+        }
+
+        .contact-form button {
+            background-color: #7baaf0;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #252281;
+            color: white;
+        }
+
+        .map-section {
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .map-section iframe {
+            border: 0;
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-media {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            color: #ffffff;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #3059ff;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #7baaf0;
+        }
+
+        .faq-item p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        footer a {
+            color: #3059ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .error {
+            border-color: #ff4444 !important;
+        }
+
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .light-mode .contact-section,
+        .light-mode .faq-section {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .light-mode .contact-form input,
+        .light-mode .contact-form textarea {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="navbar-logo">
+                <h1>Tradelens</h1>
+            </div>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stocks.html">Stocks</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section fade-in" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Us</h2>
+            <p>We'd love to hear from you! Fill out the form below to reach us.</p>
+            <form class="contact-form" action="/submit-contact-form" method="POST" novalidate>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Write your message here" required></textarea>
+
+                <button type="submit" aria-label="Send your message">Send Message</button>
+            </form>
+        </section>
+
+        <section class="map-section fade-in">
+            <h2>Find Us</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434508618!2d78.9629!3d20.5937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c5c80d2aa8cd%3A0x8f7f8b3e73d40d5f!2sIndia!5e0!3m2!1sen!2sin!4v1609435412345!5m2!1sen!2sin"
+                allowfullscreen="" loading="lazy"></iframe>
+        </section>
+
+        <section class="faq-section fade-in">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How can I get support?</h3>
+                <p>You can reach us through the contact form or email us directly at support@tradelens.com.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What services does Tradelens offer?</h3>
+                <p>We provide stock market insights, news, and analytics tools to help investors make informed decisions.</p>
+            </div>
+        </section>
+
+        <section class="social-media fade-in">
+            <h2>Follow Us</h2>
+            <a href="https://facebook.com" aria-label="Facebook" target="_blank">Facebook</a>
+            <a href="https://twitter.com" aria-label="Twitter" target="_blank">Twitter</a>
+            <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com" aria-label="Instagram" target="_blank">Instagram</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Tradelens. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-adjust"></i>
+    </button>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form validation and submission
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateForm()) {
+                // Simulate form submission
+                setTimeout(() => {
+                    alert('Thank you for your message. We will get back to you soon!');
+                    form.reset();
+                }, 1000);
+            }
+        });
+
+        function validateForm() {
+            let isValid = true;
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                } else {
+                    input.classList.remove('error');
+                }
+            });
+            return isValid;
+        }
+
+        // Fade-in effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Dark mode toggle
+        const toggleButton = document.getElementById('darkModeToggle');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
